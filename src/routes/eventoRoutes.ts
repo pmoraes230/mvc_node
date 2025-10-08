@@ -3,9 +3,9 @@ import { getEventos, createEvento, updateEvento, deleteEvento } from "../control
 
 const router = Router();
 
-router.get(`/eventos ${getEventos}`);
-router.post(`/eventos ${createEvento}`);
-router.put(`/eventos/:id ${updateEvento}`);
-router.delete(`/eventos/:id ${deleteEvento}`);
+router.get("/eventos", getEventos);
+router.post("/eventos", createEvento);
+router.put("/eventos/:id", updateEvento);
+router.delete("/eventos/:id", deleteEvento);
 
 export default router;

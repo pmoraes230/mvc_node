@@ -6,7 +6,7 @@ import { Evento } from "../models/evento";
 export async function getEventos(req: Request, res: Response) {
     try {
         const connection = await connectDB();
-        const [rows] = await connection.query("SELECT * FROM Evento");
+        const [rows] = await connection.query("SELECT * FROM evento");
         await connection.end();
         res.json(rows);
     } catch (error) {
@@ -19,7 +19,7 @@ export async function createEvento(req: Request, res: Response) {
     try {
         const conn = await connectDB();
         const query = `
-            INSERT INTO Evento (Nome_Evento, LimitePessoas_Evento, Data_Evento, Horario_Evento, Descricao_Evento, Imagem_Evento, Usuario_ID_Usuario)
+            INSERT INTO evento (Nome_Evento, LimitePessoas_Evento, Data_Evento, Horario_Evento, Descricao_Evento, Imagem_Evento, Usuario_ID_Usuario)
             VALUES (?, ?, ?, ?, ?, ?, ?)
         `;
         const [result] = await conn.query(query, [
@@ -44,7 +44,7 @@ export async function updateEvento(req: Request, res: Response) {
     try {
         const conn = await connectDB();
         const query = `
-            UPDATE Evento
+            UPDATE evento
             SET Nome_Evento = ?, LimitePessoas_Evento = ?, Data_Evento = ?, Horario_Evento = ?, Descricao_Evento = ?, 
                 Imagem_Evento = ?, Usuario_ID_Usuario = ?
             WHERE ID_Evento = ?
@@ -68,7 +68,7 @@ export async function deleteEvento(req: Request, res: Response): Promise<void> {
     const id = parseInt(req.params.id);
     try {
         const conn = await connectDB();
-        await conn.query("DELETE FROM Evento WHERE ID_Evento = ?", [id]);
+        await conn.query("DELETE FROM e vento WHERE ID_Evento = ?", [id]);
         await conn.end();
         res.json({ message: "Evento apagado do sistema." });
     } catch (error) {
